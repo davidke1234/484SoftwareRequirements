@@ -1,0 +1,199 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: white;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .header {
+    display: flex;
+    justify-content: right;
+    &.login {
+      visibility: hidden;
+    }
+  }
+  .main-parent {
+    width: 375px;
+    height: 800px;
+    background-color: #001248;
+    padding: 1rem;
+    position: relative;
+    border-radius: 0.5rem;
+  }
+  .login-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    .login-input {
+      display: block;
+      padding: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      width: 100%;
+      margin: 1rem 0rem;
+      font-size: 1rem;
+      color:#001248;
+    }
+    button {
+      border: none;
+      display: block;
+      margin: 0.5rem auto;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      background-color: transparent;
+      border: 1px solid #ffffff;
+      color: #ffffff;
+      font-size: 1rem;
+      &:hover{
+        background-color: white;
+        color: #001248;
+      }
+    }
+  }
+  .logo {
+    text-align: center;
+    margin-top: 24px;
+    margin-bottom: 32px;
+    transform: scale(1.3);
+  }
+
+  .conversation {
+    height: calc(100vh - 350px);
+    overflow: scroll;
+    padding-right: 5px;
+  }
+
+  .message {
+    max-width: 75%;
+    line-height: 1.6;
+    padding: 16px 20px;
+    border-radius: 6px;
+    margin: 16px 0;
+    width: fit-content;
+    &.received {
+      background-color: rgba($color: white, $alpha: 0.4);
+      border-top-left-radius: 0;
+    }
+    &.sent {
+      background-color: rgba($color: white, $alpha: 0.2);
+      border-bottom-right-radius: 0;
+      margin-left: auto;
+      width: fit-content;
+    }
+    .material-icons {
+      vertical-align: middle;
+    }
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    .chip {
+      padding: 12px 14px;
+      border-radius: 6px;
+      background-color: rgba($color: white, $alpha: 0.2);
+      margin-right: 12px;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+  }
+  .outer-circle {
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+    border: 10px solid #ffffff10;
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    animation: fade 1s 0.2s infinite;
+  }
+  .inner-circle {
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border: 10px solid #ffffff;
+    opacity: 50%;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    animation: fade 1s  infinite;
+  }
+  .mic-large, .mic-mini {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    bottom: 0;
+    max-height: 290px;
+    overflow: hidden;
+    justify-content: center;
+    
+    svg {
+      transform: scale(3);
+      transform-origin: center;
+    }
+  }
+  
+  .mic-mini svg {
+    transform: scale(3);
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+    .action {
+      background-color: white;
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: #444444;
+      margin: 0 8px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      .material-icons {
+        margin-right: 4px;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  body .main-parent {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    padding: 1rem;
+    .conversation {
+      height: calc(100% - 250px);
+    }
+  }
+}
+
+@keyframes fade {
+  from{
+    opacity: 75%;
+    transform: translateX(-50%) scale(1);
+  }
+  to{
+    opacity: 0;
+    transform: translateX(-50%) scale(1.5);
+  }
+  
+}
